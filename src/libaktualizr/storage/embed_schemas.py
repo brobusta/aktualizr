@@ -31,6 +31,8 @@ if __name__ == '__main__':
         sys.exit(-1)
 
     sql_folder = sys.argv[1]
+    if os.path.isfile(sql_folder):
+        sql_folder = os.path.dirname(sql_folder)
     schemas_header = sys.argv[2]
     prefix = sys.argv[3]
     migration_folder = os.path.join(sql_folder, 'migration')

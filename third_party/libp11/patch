@@ -1,0 +1,33 @@
+diff --git a/src/eng_err.c b/src/eng_err.c
+index bbeb2fe..7843221 100644
+--- a/src/eng_err.c
++++ b/src/eng_err.c
+@@ -12,7 +12,7 @@
+ #include <openssl/err.h>
+ #include "eng_err.h"
+ 
+-#define ENG_LIB_NAME "pkcs11 engine"
++/* #define ENG_LIB_NAME "pkcs11 engine" */
+ 
+ /* BEGIN ERROR CODES */
+ #ifndef OPENSSL_NO_ERR
+@@ -90,5 +90,5 @@ void ERR_ENG_error(int function, int reason, char *file, int line)
+ {
+     if (ENG_lib_error_code == 0)
+         ENG_lib_error_code = ERR_get_next_error_library();
+-    ERR_PUT_error(ENG_lib_error_code, function, reason, file, line);
++    ERR_put_error(ENG_lib_error_code, function, reason, file, line);
+ }
+diff --git a/src/p11_err.c b/src/p11_err.c
+index d7b285a..960a170 100644
+--- a/src/p11_err.c
++++ b/src/p11_err.c
+@@ -12,7 +12,7 @@
+ #include <openssl/err.h>
+ #include "p11_err.h"
+ 
+-#define P11_LIB_NAME "libp11"
++/* #define P11_LIB_NAME "libp11" */
+ 
+ /* BEGIN ERROR CODES */
+ #ifndef OPENSSL_NO_ERR

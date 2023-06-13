@@ -167,6 +167,14 @@ struct BootloaderConfig {
 // Should be derived by calling Config::keymanagerConfig()
 struct KeyManagerConfig {
   KeyManagerConfig() = delete;  // only allow construction by initializer list
+  KeyManagerConfig(P11Config p11, CryptoSource ca, CryptoSource pkey, CryptoSource cert, KeyType type, CryptoSource key)
+    : p11(std::move(p11))
+    , tls_ca_source(ca)
+    , tls_pkey_source(pkey)
+    , tls_cert_source(cert)
+    , uptane_key_type(type)
+    , uptane_key_source(key)
+  {}
   P11Config p11;
   CryptoSource tls_ca_source;
   CryptoSource tls_pkey_source;
