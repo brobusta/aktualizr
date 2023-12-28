@@ -1,0 +1,29 @@
+name: CI2
+
+on:
+  workflow_dispatch: # Allow manual runs.
+  pull_request:
+    branches: ["develop"]
+  push:
+    branches: ["develop"]
+
+jobs:
+  ci:
+    name: CI2
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: bazelbuild/setup-bazelisk@v2
+      - name: Mount bazel cache
+        uses: actions/cache@v3
+        with:
+          path: "~/.cache/bazel"
+          key: bazel
+
+      - name: Build and test
+        run: |
+          set -ex
+          bazel fetch //...
+          bazel build //...
+          bazel test --test_output=errors //...
