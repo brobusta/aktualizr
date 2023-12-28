@@ -64,6 +64,7 @@ cc_test(
         "//src/libaktualizr",
         "@gtest//:gtest_main",
     ],
+    linkstatic = True,
 )
 
 cc_test(
@@ -74,6 +75,7 @@ cc_test(
         "//src/libaktualizr",
         "@gtest//:gtest_main",
     ],
+    linkstatic = True,
 )
 
 cc_test(
@@ -85,6 +87,7 @@ cc_test(
         "//src/uptane_generator:uptane_generator_lib",
         "@gtest//:gtest_main",
     ],
+    linkstatic = True,
 )
 
 cc_test(
@@ -95,6 +98,7 @@ cc_test(
         "//src/libaktualizr",
         "@gtest//:gtest_main",
     ],
+    linkstatic = True,
 )
 
 filegroup(
@@ -116,6 +120,7 @@ cc_test(
         "//src/libaktualizr",
         "@gtest//:gtest_main",
     ],
+    linkstatic = True,
 )
 
 cc_test(
@@ -129,6 +134,7 @@ cc_test(
         "//src/libaktualizr",
         "@gtest//:gtest_main",
     ],
+    linkstatic = True,
 )
 
 cc_test(
@@ -139,6 +145,7 @@ cc_test(
         "//src/libaktualizr",
         "@gtest//:gtest_main",
     ],
+    linkstatic = True,
 )
 
 cc_test(
@@ -152,6 +159,7 @@ cc_test(
         "//src/libaktualizr",
         "@gtest//:gtest_main",
     ],
+    linkstatic = True,
 )
 
 cc_test(
@@ -166,6 +174,7 @@ cc_test(
         "//tests:test_utils",
         "@gtest//:gtest_main",
     ],
+    linkstatic = True,
 )
 
 cc_test(
@@ -180,6 +189,7 @@ cc_test(
         "//tests:test_utils",
         "@gtest//:gtest_main",
     ],
+    linkstatic = True,
 )
 
 cc_test(
@@ -194,6 +204,7 @@ cc_test(
         "//tests:test_utils",
         "@gtest//:gtest_main",
     ],
+    linkstatic = True,
 )
 
 cc_test(
@@ -204,6 +215,7 @@ cc_test(
         "//src/libaktualizr",
         "@gtest//:gtest_main",
     ],
+    linkstatic = True,
 )
 
 cc_test(
@@ -217,6 +229,7 @@ cc_test(
         "//src/libaktualizr",
         "@gtest//:gtest_main",
     ],
+    linkstatic = True,
 )
 
 cc_test(
@@ -231,6 +244,7 @@ cc_test(
         "//tests:test_utils",
         "@gtest//:gtest_main",
     ],
+    linkstatic = True,
 )
 
 cc_test(
@@ -251,4 +265,5 @@ cc_test(
         "//tests:uptane_test_common",
         "@gtest//:gtest_main",
     ],
+    linkstatic = True,
 )

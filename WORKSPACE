@@ -16,8 +16,8 @@ load("@hermetic_cc_toolchain//toolchain:defs.bzl", zig_toolchains = "toolchains"
 zig_toolchains()
 
 register_toolchains(
-    "@zig_sdk//toolchain:linux_amd64_gnu.2.28",
-    "@zig_sdk//toolchain:linux_arm64_gnu.2.28",
+    "@zig_sdk//toolchain:linux_amd64_gnu.2.34",
+    "@zig_sdk//toolchain:linux_arm64_gnu.2.34",
 )
 
 # Load rules_foreign_cc

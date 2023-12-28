@@ -1529,6 +1529,7 @@ cc_library(
         "libarchive/archive_entry.h",
     ],
     strip_include_prefix = "libarchive/",
+    linkstatic = True,
     local_defines = [
         "HAVE_CONFIG_H",
     ],

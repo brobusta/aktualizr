@@ -16,6 +16,9 @@ _CONFIGURE_OPTIONS = [
 
 configure_make(
     name = "openssl",
+    args = [
+        "-j8",
+    ],
     configure_command = "Configure",
     configure_in_place = True,
     configure_options = select({
@@ -34,4 +37,3 @@ configure_make(
     ],
     visibility = ["//visibility:public"],
 )
-
