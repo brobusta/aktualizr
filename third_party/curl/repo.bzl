@@ -12,4 +12,3 @@ def load_curl_repo():
             "https://github.com/curl/curl/archive/refs/tags/curl-8_1_2.tar.gz",
         ],
     )
-

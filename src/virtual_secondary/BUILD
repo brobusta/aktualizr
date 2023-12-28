@@ -5,12 +5,12 @@ package(default_visibility = ["//visibility:public"])
 cc_library(
     name = "virtual_secondary",
     srcs = [
-        "virtualsecondary.cc",
         "managedsecondary.cc",
+        "virtualsecondary.cc",
     ],
     hdrs = [
-        "virtualsecondary.h",
         "managedsecondary.h",
+        "virtualsecondary.h",
     ],
     includes = [
         ".",
@@ -21,4 +21,3 @@ cc_library(
         "//src/libaktualizr",
     ],
 )
-

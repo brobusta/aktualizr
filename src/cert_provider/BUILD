@@ -16,4 +16,3 @@ cc_binary(
         "//src/libaktualizr",
     ],
 )
-

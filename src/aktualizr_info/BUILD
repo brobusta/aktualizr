@@ -5,9 +5,9 @@ package(default_visibility = ["//visibility:public"])
 cc_binary(
     name = "aktualizr_info",
     srcs = [
-        "main.cc",
         "aktualizr_info_config.cc",
         "aktualizr_info_config.h",
+        "main.cc",
     ],
     includes = [
         ".",
@@ -18,4 +18,3 @@ cc_binary(
         "//src/libaktualizr",
     ],
 )
-

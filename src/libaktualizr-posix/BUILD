@@ -176,7 +176,7 @@ genrule(
         "@asn1c",
         "@asn1c//:skeletons",
         "@asn1c//:skeletons_readme",
-    ]
+    ],
 )
 
 cc_library(
@@ -184,11 +184,11 @@ cc_library(
     srcs = [
         ":gen_asn1_messages",
     ],
-    strip_include_prefix = "generated/",
     includes = [
         "generated/",
     ],
     linkstatic = True,
+    strip_include_prefix = "generated/",
 )
 
 cc_library(
@@ -203,15 +203,15 @@ cc_library(
         "asn1/asn1-cerstream.h",
         "asn1/asn1_message.h",
     ],
-    strip_include_prefix = "asn1/",
     includes = [
         "asn1/",
     ],
     linkstatic = True,
+    strip_include_prefix = "asn1/",
     deps = [
         ":asn1_messages",
-        "@boost//:intrusive_ptr",
         "//src/libaktualizr",
+        "@boost//:intrusive_ptr",
     ],
 )
 
@@ -223,10 +223,10 @@ cc_library(
     hdrs = [
         "ipuptanesecondary.h",
     ],
-    linkstatic = True,
     includes = [
         ".",
     ],
+    linkstatic = True,
     deps = [
         ":asn1_lib",
         "//src/libaktualizr",

@@ -27,21 +27,21 @@ cc_library(
         "metafake.h",
         "test_utils.h",
     ],
+    copts = [
+        "-Wno-deprecated-declarations",
+    ],
     includes = [
         ".",
     ],
     linkopts = [],
     linkstatic = True,
-    alwayslink = True,
     deps = [
         "//src/libaktualizr",
-        "//src/uptane_generator:uptane_generator_lib",
         "//src/sota_tools:sota_tools_lib",
+        "//src/uptane_generator:uptane_generator_lib",
         "@gtest",
     ],
-    copts = [
-        "-Wno-deprecated-declarations",
-    ],
+    alwayslink = True,
 )
 
 cc_library(
@@ -50,15 +50,15 @@ cc_library(
     hdrs = [
         "uptane_test_common.h",
     ],
+    copts = [],
     includes = [
         ".",
     ],
     linkopts = [],
     linkstatic = True,
-    alwayslink = True,
     deps = [
         "//src/libaktualizr",
         "//src/virtual_secondary",
     ],
-    copts = [],
+    alwayslink = True,
 )

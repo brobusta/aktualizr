@@ -10,44 +10,50 @@ genrule(
            "$(location //config:sql_schema) " +
            "$@ libaktualizr"),
     tools = [
-        "//config:sql_schema",
         "//config:sql_migration",
+        "//config:sql_schema",
     ],
 )
 
 cc_library(
     name = "libaktualizr",
-    srcs = glob(["**/*.cc"], exclude = [
-        "crypto/p11engine_dummy.cc",
-        "**/*_test.cc",
-        "**/*_test_*.cc",
-        "**/*ostree*.cc",
-    ]) + [":gen_sql_schemas"],
-    hdrs = glob(["**/*.h"], exclude = ["**/*ostree*.h"]),
+    srcs = glob(
+        ["**/*.cc"],
+        exclude = [
+            "crypto/p11engine_dummy.cc",
+            "**/*_test.cc",
+            "**/*_test_*.cc",
+            "**/*ostree*.cc",
+        ],
+    ) + [":gen_sql_schemas"],
+    hdrs = glob(
+        ["**/*.h"],
+        exclude = ["**/*ostree*.h"],
+    ),
     includes = [
         ".",
     ],
     linkopts = [],
     linkstatic = True,
-    alwayslink = True,
     deps = [
         "//:libaktualizr_headers",
-        "@openssl",
         "@boost//:filesystem",
+        "@boost//:log",
         "@boost//:program_options",
         "@boost//:property_tree",
-        "@boost//:thread",
-        "@boost//:log",
         "@boost//:signals2",
+        "@boost//:thread",
         "@boost//:uuid",
         "@curl",
-        "@jsoncpp",
-        "@libsodium",
-        "@libp11",
         "@gtest",
-        "@sqlite3",
+        "@jsoncpp",
         "@libarchive",
+        "@libp11",
+        "@libsodium",
+        "@openssl",
+        "@sqlite3",
     ],
+    alwayslink = True,
 )
 
 cc_test(
@@ -100,15 +106,15 @@ cc_test(
     name = "campaign_test",
     size = "small",
     srcs = ["campaign/campaign_test.cc"],
-    deps = [
-        "//src/libaktualizr",
-        "@gtest//:gtest_main",
-    ],
     args = [
         "$(location :campaign_test_data)",
     ],
     data = [
         ":campaign_test_data",
+    ],
+    deps = [
+        "//src/libaktualizr",
+        "@gtest//:gtest_main",
     ],
 )
 
@@ -116,12 +122,12 @@ cc_test(
     name = "crypto_test",
     size = "small",
     srcs = ["crypto/crypto_test.cc"],
+    data = [
+        "//tests:test_data",
+    ],
     deps = [
         "//src/libaktualizr",
         "@gtest//:gtest_main",
-    ],
-    data = [
-        "//tests:test_data",
     ],
 )
 
@@ -139,12 +145,12 @@ cc_test(
     name = "keymanager_test",
     size = "small",
     srcs = ["crypto/keymanager_test.cc"],
+    data = [
+        "//tests:test_data",
+    ],
     deps = [
         "//src/libaktualizr",
         "@gtest//:gtest_main",
-    ],
-    data = [
-        "//tests:test_data",
     ],
 )
 
@@ -152,13 +158,13 @@ cc_test(
     name = "httpclient_test",
     size = "small",
     srcs = ["http/httpclient_test.cc"],
+    data = [
+        "//tests:fake_http_server",
+    ],
     deps = [
         "//src/libaktualizr",
         "//tests:test_utils",
         "@gtest//:gtest_main",
-    ],
-    data = [
-        "//tests:fake_http_server",
     ],
 )
 
@@ -166,13 +172,13 @@ cc_test(
     name = "fetcher_death_test",
     size = "small",
     srcs = ["package_manager/fetcher_death_test.cc"],
+    data = [
+        "//tests:fake_http_server",
+    ],
     deps = [
         "//src/libaktualizr",
         "//tests:test_utils",
         "@gtest//:gtest_main",
-    ],
-    data = [
-        "//tests:fake_http_server",
     ],
 )
 
@@ -180,13 +186,13 @@ cc_test(
     name = "fetcher_test",
     size = "small",
     srcs = ["package_manager/fetcher_test.cc"],
+    data = [
+        "//tests:fake_http_server",
+    ],
     deps = [
         "//src/libaktualizr",
         "//tests:test_utils",
         "@gtest//:gtest_main",
-    ],
-    data = [
-        "//tests:fake_http_server",
     ],
 )
 
@@ -204,12 +210,12 @@ cc_test(
     name = "packagemanagerfactory_test",
     size = "small",
     srcs = ["package_manager/packagemanagerfactory_test.cc"],
+    local_defines = [
+        "__NO_MAIN__",
+    ],
     deps = [
         "//src/libaktualizr",
         "@gtest//:gtest_main",
-    ],
-    local_defines = [
-        "__NO_MAIN__",
     ],
 )
 
@@ -217,13 +223,13 @@ cc_test(
     name = "packagemanagerfake_test",
     size = "small",
     srcs = ["package_manager/packagemanagerfake_test.cc"],
+    local_defines = [
+        "__NO_MAIN__",
+    ],
     deps = [
         "//src/libaktualizr",
         "//tests:test_utils",
         "@gtest//:gtest_main",
-    ],
-    local_defines = [
-        "__NO_MAIN__",
     ],
 )
 
@@ -231,18 +237,18 @@ cc_test(
     name = "aktualizr_test",
     size = "small",
     srcs = ["primary/aktualizr_test.cc"],
+    args = [
+        "$(locations //tests/uptane_repo_generation:uptane_repo_full_no_correlation_id)",
+    ],
+    data = [
+        "//tests:config",
+        "//tests:test_data",
+        "//tests/uptane_repo_generation:uptane_repo_full_no_correlation_id",
+    ],
     deps = [
         "//src/libaktualizr",
         "//tests:test_utils",
         "//tests:uptane_test_common",
         "@gtest//:gtest_main",
-    ],
-    args = [
-        "$(locations //tests/uptane_repo_generation:uptane_repo_full_no_correlation_id)",
-    ],
-    data = [
-        "//tests/uptane_repo_generation:uptane_repo_full_no_correlation_id",
-        "//tests:config",
-        "//tests:test_data",
     ],
 )

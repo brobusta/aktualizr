@@ -4,14 +4,14 @@ cc_library(
     name = "sota_tools_lib",
     srcs = [
         "authenticate.cc",
-        "server_credentials.cc",
         "oauth2.cc",
+        "server_credentials.cc",
         "treehub_server.cc",
     ],
     hdrs = [
         "authenticate.h",
-        "server_credentials.h",
         "oauth2.h",
+        "server_credentials.h",
         "treehub_server.h",
     ],
     includes = [
@@ -19,8 +19,8 @@ cc_library(
     ],
     linkopts = [],
     linkstatic = True,
-    alwayslink = True,
     deps = [
         "//src/libaktualizr",
     ],
+    alwayslink = True,
 )

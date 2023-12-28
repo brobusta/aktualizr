@@ -11,4 +11,3 @@ def load_openssl_repo():
             "https://github.com/openssl/openssl/archive/OpenSSL_1_1_1u.tar.gz",
         ],
     )
-

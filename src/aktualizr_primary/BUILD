@@ -18,8 +18,7 @@ cc_binary(
     deps = [
         "//:libaktualizr_headers",
         "//src/libaktualizr",
-        "//src/virtual_secondary",
         "//src/libaktualizr-posix:aktualizr-posix",
+        "//src/virtual_secondary",
     ],
 )
-

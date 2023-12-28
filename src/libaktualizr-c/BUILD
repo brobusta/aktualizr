@@ -13,4 +13,3 @@ cc_library(
         "//src/libaktualizr",
     ],
 )
-
