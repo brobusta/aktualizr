@@ -2387,11 +2387,17 @@ TEST(Aktualizr, CustomHwInfo) {
 #ifndef __NO_MAIN__
 int main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);
-  if (argc != 2) {
+  if (argc < 2) {
     std::cerr << "Error: " << argv[0] << " requires the path to the base directory of Uptane repos.\n";
     return EXIT_FAILURE;
   }
   uptane_repos_dir = argv[1];
+  // Fix for bazel test
+  // Expect: <uptane_repos>/full_no_correlation_id/keys/director/root/key_type
+  if (!boost::filesystem::is_directory(uptane_repos_dir)) {
+    uptane_repos_dir = uptane_repos_dir.parent_path().parent_path().parent_path().parent_path().parent_path();
+  }
+  std::cout << uptane_repos_dir.string() << "\n";
 
   logger_init();
   logger_set_threshold(boost::log::trivial::trace);

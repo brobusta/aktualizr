@@ -24,7 +24,6 @@ cc_library(
         "//:libaktualizr_headers",
         "//src/libaktualizr",
     ],
-    visibility = ["//visibility:private"]
 )
 
 cc_binary(

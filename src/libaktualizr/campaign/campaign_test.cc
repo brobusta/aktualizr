@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <boost/filesystem/path.hpp>
+#include <boost/filesystem.hpp>
 
 #include "libaktualizr/campaign.h"
 
@@ -86,6 +86,9 @@ int main(int argc, char **argv) {
     return EXIT_FAILURE;
   }
   test_data_dir = argv[1];
+  if (!boost::filesystem::is_directory(test_data_dir)) {
+    test_data_dir = test_data_dir.parent_path();
+  }
 
   return RUN_ALL_TESTS();
 }

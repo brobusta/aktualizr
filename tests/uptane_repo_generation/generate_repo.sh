@@ -31,7 +31,7 @@ uptane_gen() {
     "$UPTANE_GENERATOR" --path "$DEST_DIR" "$@"
 }
 
-if [ -d "$DEST_DIR" ]; then
+if [ -f "$DEST_DIR/repo/repo/targets.json" ]; then
     # already here, bailing
     exit 0
 fi

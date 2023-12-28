@@ -27,13 +27,28 @@ http_archive(
     strip_prefix = "rules_foreign_cc-0.9.0",
     url = "https://github.com/bazelbuild/rules_foreign_cc/archive/0.9.0.tar.gz",
 )
+
 load("@rules_foreign_cc//foreign_cc:repositories.bzl", "rules_foreign_cc_dependencies")
+
 rules_foreign_cc_dependencies()
 
 # Load all external repos:
 load("//third_party:repos.bzl", "load_external_repos")
+
 load_external_repos()
 
 load("@com_github_nelhage_rules_boost//:boost/boost.bzl", "boost_deps")
+
 boost_deps()
 
+# compile_commands.json
+http_archive(
+    name = "hedron_compile_commands",
+    sha256 = "f03ed383f1093b5960b37648c4fc5ae2b3d98050509bc2e11719afc8b1fd3b3a",
+    url = "https://github.com/hedronvision/bazel-compile-commands-extractor/archive/ac6411f8f347e5525038cb7858db4969db9e74f2.tar.gz",
+    strip_prefix = "bazel-compile-commands-extractor-ac6411f8f347e5525038cb7858db4969db9e74f2",
+)
+
+load("@hedron_compile_commands//:workspace_setup.bzl", "hedron_compile_commands_setup")
+
+hedron_compile_commands_setup()
