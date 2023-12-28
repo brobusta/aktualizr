@@ -302,7 +302,7 @@ write_file(
 #define HAVE_ACL_TAG_T 1
 
 /* Define to 1 if you have the `arc4random_buf' function. */
-#define HAVE_ARC4RANDOM_BUF 1
+/* #undef HAVE_ARC4RANDOM_BUF  */
 
 /* Define to 1 if you have the <attr/xattr.h> header file. */
 /* #undef HAVE_ATTR_XATTR_H */
@@ -1520,7 +1520,7 @@ cc_library(
     name = "libarchive",
     srcs = glob([
         "libarchive/*.h",
-        "libarchive/*.c"
+        "libarchive/*.c",
     ]) + [
         ":config_h",
     ],
@@ -1535,9 +1535,8 @@ cc_library(
     deps = [
         "@openssl",
         "@zlib",
-        "@org_lzma_lzma//:lzma"
+        "@org_lzma_lzma//:lzma",
     ],
     linkopts = [
     ],
 )
-

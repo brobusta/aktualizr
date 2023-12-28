@@ -6,9 +6,9 @@ def load_curl_repo():
     http_archive(
         name = "curl",
         build_file = "@//third_party/curl:curl.BUILD",
-        # sha256 = "8085bfc250ffa6f3b5b1b05bea42b368a0361ede004f7c2b9edf102a59e8efb4",
-        strip_prefix = "curl-curl-8_1_2",
+        sha256 = "8117d24a8c29a0c3aa160703eb487694f3d4aa72ea2067b45beb439ea4d47668",
+        strip_prefix = "curl-curl-8_5_0",
         urls = [
-            "https://github.com/curl/curl/archive/refs/tags/curl-8_1_2.tar.gz",
+            "https://github.com/curl/curl/archive/refs/tags/curl-8_5_0.tar.gz",
         ],
     )
