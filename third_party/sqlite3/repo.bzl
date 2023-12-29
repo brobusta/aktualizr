@@ -6,9 +6,9 @@ def load_sqlite3_repo():
     http_archive(
         name = "sqlite3",
         build_file = "@//third_party/sqlite3:sqlite3.BUILD",
-        sha256 = "1cc824d0f5e675829fa37018318fda833ea56f7e9de2b41eddd9f7643b5ec29e",
-        strip_prefix = "sqlite-amalgamation-3420000",
+        sha256 = "833be89b53b3be8b40a2e3d5fedb635080e3edb204957244f3d6987c2bb2345f",
+        strip_prefix = "sqlite-amalgamation-3440200",
         urls = [
-            "https://www.sqlite.org/2023/sqlite-amalgamation-3420000.zip",
+            "https://www.sqlite.org/2023/sqlite-amalgamation-3440200.zip",
         ],
     )
