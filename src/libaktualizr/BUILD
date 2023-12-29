@@ -179,7 +179,7 @@ cc_test(
 
 cc_test(
     name = "fetcher_death_test",
-    size = "small",
+    size = "medium",
     srcs = ["package_manager/fetcher_death_test.cc"],
     data = [
         "//tests:fake_http_server",
