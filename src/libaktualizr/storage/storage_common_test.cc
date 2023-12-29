@@ -677,7 +677,7 @@ TEST(StorageImport, ImportInitialRoot) {
 
   // Copy the real director root.json over
   fs::copy_file(repo_path / "repo/director/root.json", import_config.base_path / "director/root.json",
-                fs::copy_option::overwrite_if_exists);
+                fs::copy_options::overwrite_existing);
   storage->importData(import_config);
   EXPECT_TRUE(storage->loadLatestRoot(nullptr, Uptane::RepositoryType::Director()));
 }
