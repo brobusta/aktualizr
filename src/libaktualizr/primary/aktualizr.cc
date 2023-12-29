@@ -9,8 +9,6 @@
 #include "utilities/apiqueue.h"
 #include "utilities/timer.h"
 
-using std::shared_ptr;
-
 Aktualizr::Aktualizr(const Config &config)
     : Aktualizr(config, INvStorage::newStorage(config.storage), std::make_shared<HttpClient>()) {}
 
@@ -198,7 +196,7 @@ result::Pause Aktualizr::Resume() {
 void Aktualizr::Abort() { api_queue_->abort(); }
 
 boost::signals2::connection Aktualizr::SetSignalHandler(
-    const std::function<void(shared_ptr<event::BaseEvent>)> &handler) {
+    const std::function<void(std::shared_ptr<event::BaseEvent>)> &handler) {
   return sig_->connect(handler);
 }
 

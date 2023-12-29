@@ -10,12 +10,11 @@
 #include "crypto/keymanager.h"
 #include "logging/logging.h"
 
-using std::map;
 using std::shared_ptr;
 
 Provisioner::Provisioner(const ProvisionConfig& config, shared_ptr<INvStorage> storage,
                          shared_ptr<HttpInterface> http_client, shared_ptr<KeyManager> key_manager,
-                         const map<Uptane::EcuSerial, shared_ptr<SecondaryInterface>>& secondaries)
+                         const std::map<Uptane::EcuSerial, shared_ptr<SecondaryInterface>>& secondaries)
     : config_(config),
       storage_(std::move(storage)),
       http_client_(std::move(http_client)),
