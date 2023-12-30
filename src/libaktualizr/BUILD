@@ -61,7 +61,7 @@ cc_test(
     size = "small",
     srcs = ["storage/storage_atomic_test.cc"],
     deps = [
-        "//src/libaktualizr",
+        ":libaktualizr",
         "@gtest//:gtest_main",
     ],
     linkstatic = True,
@@ -72,7 +72,7 @@ cc_test(
     size = "small",
     srcs = ["storage/sql_utils_test.cc"],
     deps = [
-        "//src/libaktualizr",
+        ":libaktualizr",
         "@gtest//:gtest_main",
     ],
     linkstatic = True,
@@ -83,7 +83,7 @@ cc_test(
     size = "small",
     srcs = ["storage/storage_common_test.cc"],
     deps = [
-        "//src/libaktualizr",
+        ":libaktualizr",
         "//src/uptane_generator:uptane_generator_lib",
         "@gtest//:gtest_main",
     ],
@@ -95,7 +95,7 @@ cc_test(
     size = "small",
     srcs = ["bootloader/bootloader_test.cc"],
     deps = [
-        "//src/libaktualizr",
+        ":libaktualizr",
         "@gtest//:gtest_main",
     ],
     linkstatic = True,
@@ -117,7 +117,7 @@ cc_test(
         ":campaign_test_data",
     ],
     deps = [
-        "//src/libaktualizr",
+        ":libaktualizr",
         "@gtest//:gtest_main",
     ],
     linkstatic = True,
@@ -131,7 +131,7 @@ cc_test(
         "//tests:test_data",
     ],
     deps = [
-        "//src/libaktualizr",
+        ":libaktualizr",
         "@gtest//:gtest_main",
     ],
     linkstatic = True,
@@ -142,7 +142,7 @@ cc_test(
     size = "small",
     srcs = ["crypto/hash_test.cc"],
     deps = [
-        "//src/libaktualizr",
+        ":libaktualizr",
         "@gtest//:gtest_main",
     ],
     linkstatic = True,
@@ -156,7 +156,7 @@ cc_test(
         "//tests:test_data",
     ],
     deps = [
-        "//src/libaktualizr",
+        ":libaktualizr",
         "@gtest//:gtest_main",
     ],
     linkstatic = True,
@@ -170,7 +170,7 @@ cc_test(
         "//tests:fake_http_server",
     ],
     deps = [
-        "//src/libaktualizr",
+        ":libaktualizr",
         "//tests:test_utils",
         "@gtest//:gtest_main",
     ],
@@ -185,7 +185,7 @@ cc_test(
         "//tests:fake_http_server",
     ],
     deps = [
-        "//src/libaktualizr",
+        ":libaktualizr",
         "//tests:test_utils",
         "@gtest//:gtest_main",
     ],
@@ -200,7 +200,7 @@ cc_test(
         "//tests:fake_http_server",
     ],
     deps = [
-        "//src/libaktualizr",
+        ":libaktualizr",
         "//tests:test_utils",
         "@gtest//:gtest_main",
     ],
@@ -212,7 +212,7 @@ cc_test(
     size = "small",
     srcs = ["package_manager/packagemanagerconfig_test.cc"],
     deps = [
-        "//src/libaktualizr",
+        ":libaktualizr",
         "@gtest//:gtest_main",
     ],
     linkstatic = True,
@@ -226,7 +226,7 @@ cc_test(
         "__NO_MAIN__",
     ],
     deps = [
-        "//src/libaktualizr",
+        ":libaktualizr",
         "@gtest//:gtest_main",
     ],
     linkstatic = True,
@@ -240,7 +240,7 @@ cc_test(
         "__NO_MAIN__",
     ],
     deps = [
-        "//src/libaktualizr",
+        ":libaktualizr",
         "//tests:test_utils",
         "@gtest//:gtest_main",
     ],
@@ -260,10 +260,186 @@ cc_test(
         "//tests/uptane_repo_generation:uptane_repo_full_no_correlation_id",
     ],
     deps = [
-        "//src/libaktualizr",
+        ":libaktualizr",
         "//tests:test_utils",
         "//tests:uptane_test_common",
         "@gtest//:gtest_main",
+    ],
+    linkstatic = True,
+)
+
+cc_test(
+    name = "custom_url_test",
+    size = "small",
+    srcs = ["primary/custom_url_test.cc"],
+    args = [
+        "$(location //src/uptane_generator)",
+    ],
+    data = [
+        "//tests:config",
+        "//tests:test_data",
+        "//src/uptane_generator",
+    ],
+    deps = [
+        ":libaktualizr",
+        "//tests:test_utils",
+        "//tests:uptane_test_common",
+        "@gtest//:gtest_main",
+    ],
+    linkstatic = True,
+)
+
+cc_library(
+    name = "provisional_test_utils",
+    srcs = [
+        "primary/provisioner_test_utils.cc",
+    ],
+    hdrs = [
+        "primary/provisioner_test_utils.h",
+    ],
+    testonly = True,
+    linkstatic = True,
+    deps = [
+        ":libaktualizr",
+    ],
+    alwayslink = True,
+)
+
+cc_test(
+    name = "device_cred_prov_test",
+    size = "small",
+    srcs = ["primary/device_cred_prov_test.cc"],
+    data = [
+        "//tests:config",
+        "//tests:test_data",
+    ],
+    deps = [
+        ":provisional_test_utils",
+        "//tests:test_utils",
+        "//tests:uptane_test_common",
+        "@gtest//:gtest_main",
+    ],
+    linkstatic = True,
+)
+
+cc_test(
+    name = "empty_targets_test",
+    size = "small",
+    srcs = ["primary/empty_targets_test.cc"],
+    args = [
+        "$(location //src/uptane_generator)",
+    ],
+    data = [
+        "//tests:config",
+        "//tests:test_data",
+        "//src/uptane_generator",
+    ],
+    deps = [
+        "//tests:test_utils",
+        "//tests:uptane_test_common",
+        "@gtest//:gtest_main",
+    ],
+    linkstatic = True,
+)
+
+cc_test(
+    name = "metadata_expiration_test",
+    size = "small",
+    srcs = ["primary/metadata_expiration_test.cc"],
+    args = [
+        "$(location //src/uptane_generator)",
+    ],
+    data = [
+        "//tests:config",
+        "//tests:test_data",
+        "//src/uptane_generator",
+    ],
+    deps = [
+        "//tests:test_utils",
+        "//tests:uptane_test_common",
+        "@gtest//:gtest_main",
+    ],
+    linkstatic = True,
+)
+
+cc_test(
+    name = "metadata_fetch_test",
+    size = "small",
+    srcs = ["primary/metadata_fetch_test.cc"],
+    data = [
+        "//tests:config",
+        "//tests:test_data",
+    ],
+    deps = [
+        "//tests:test_utils",
+        "//tests:uptane_test_common",
+        "@gtest//:gtest_main",
+    ],
+    linkstatic = True,
+)
+
+cc_test(
+    name = "reportqueue_test",
+    size = "small",
+    srcs = ["primary/reportqueue_test.cc"],
+    deps = [
+        ":libaktualizr",
+        "//tests:test_utils",
+        "@gtest//:gtest_main",
+    ],
+    linkstatic = True,
+)
+
+cc_test(
+    name = "reregistration_test",
+    size = "small",
+    srcs = ["primary/reregistration_test.cc"],
+    data = [
+        "//tests:config",
+        "//tests:test_data",
+    ],
+    deps = [
+        ":libaktualizr",
+        "//tests:test_utils",
+        "//tests:uptane_test_common",
+        "@gtest//:gtest_main",
+    ],
+    linkstatic = True,
+)
+
+cc_test(
+    name = "target_mismatch_test",
+    size = "small",
+    srcs = ["primary/target_mismatch_test.cc"],
+    args = [
+        "$(location //src/uptane_generator)",
+    ],
+    data = [
+        "//tests:config",
+        "//tests:test_data",
+        "//src/uptane_generator",
+    ],
+    deps = [
+        "//tests:test_utils",
+        "//tests:uptane_test_common",
+        "@gtest//:gtest_main",
+    ],
+    linkstatic = True,
+)
+
+cc_test(
+    name = "uptane_key_test",
+    size = "small",
+    srcs = ["primary/uptane_key_test.cc"],
+    data = [
+        "//tests:test_data",
+    ],
+    deps = [
+        ":libaktualizr",
+        "//tests:test_utils",
+        "//tests:uptane_test_common",
+        "@gtest//:gtest_main",
+        "@boost//:conversion",
     ],
     linkstatic = True,
 )
