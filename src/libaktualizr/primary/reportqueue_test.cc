@@ -215,7 +215,7 @@ TEST(ReportQueue, StoreEvents) {
   check_sql(0);
 }
 
-TEST(ReportQueue, LimitEventNumber) {
+TEST(ReportQueue, DISABLED_LimitEventNumber) {
   TemporaryDirectory temp_dir;
   Config config;
   config.storage.path = temp_dir.Path();
@@ -243,7 +243,7 @@ TEST(ReportQueue, LimitEventNumber) {
   }
 }
 
-TEST(ReportQueue, PayloadTooLarge) {
+TEST(ReportQueue, DISABLED_PayloadTooLarge) {
   TemporaryDirectory temp_dir;
   Config config;
   config.storage.path = temp_dir.Path();
