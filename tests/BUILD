@@ -7,7 +7,12 @@ filegroup(
 
 filegroup(
     name = "test_data",
-    srcs = glob(["test_data/**/*"]),
+    srcs = glob(["test_data/**"]),
+)
+
+filegroup(
+    name = "tuf",
+    srcs = glob(["tuf/**"]),
 )
 
 filegroup(

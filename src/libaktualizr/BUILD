@@ -443,3 +443,52 @@ cc_test(
     ],
     linkstatic = True,
 )
+
+cc_test(
+    name = "tuf_test",
+    size = "small",
+    srcs = ["uptane/tuf_test.cc"],
+    data = [
+        "//tests:tuf",
+    ],
+    deps = [
+        ":libaktualizr",
+        "@gtest//:gtest_main",
+    ],
+    linkstatic = True,
+)
+
+cc_test(
+    name = "uptane_test",
+    size = "small",
+    srcs = ["uptane/uptane_test.cc"],
+    data = [
+        "//tests:config",
+        "//tests:test_data",
+    ],
+    deps = [
+        ":libaktualizr",
+        "//tests:test_utils",
+        "//tests:uptane_test_common",
+        "@gtest//:gtest_main",
+    ],
+    linkstatic = True,
+)
+
+cc_test(
+    name = "uptane_network_test",
+    size = "small",
+    srcs = ["uptane/uptane_network_test.cc"],
+    data = [
+        "//tests:config",
+        "//tests:test_data",
+        "//tests:fake_http_server",
+    ],
+    deps = [
+        ":libaktualizr",
+        "//tests:test_utils",
+        "//tests:uptane_test_common",
+        "@gtest//:gtest_main",
+    ],
+    linkstatic = True,
+)
