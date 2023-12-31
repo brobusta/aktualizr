@@ -21,3 +21,21 @@ cc_library(
         "//src/libaktualizr",
     ],
 )
+
+cc_test(
+    name = "virtual_secondary_test",
+    size = "small",
+    srcs = ["virtual_secondary_test.cc"],
+    data = [
+        "//tests:config",
+        "//tests:test_data",
+    ],
+    deps = [
+        ":virtual_secondary",
+        "//src/uptane_generator:uptane_generator_lib",
+        "//tests:test_utils",
+        "//tests:uptane_test_common",
+        "@gtest//:gtest_main",
+    ],
+    linkstatic = True,
+)

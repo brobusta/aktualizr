@@ -140,7 +140,7 @@ TEST(Utils, FromBase64Wrong) {
 
 TEST(Utils, Base64RoundTrip) {
   std::mt19937 gen;
-  std::uniform_int_distribution<char> chars(std::numeric_limits<char>::min(), std::numeric_limits<char>::max());
+  std::uniform_int_distribution<int> chars(std::numeric_limits<char>::min(), std::numeric_limits<char>::max());
 
   std::uniform_int_distribution<int> length(0, 20);
 
@@ -148,7 +148,7 @@ TEST(Utils, Base64RoundTrip) {
     int len = length(gen);
     std::string original;
     for (int i = 0; i < len; i++) {
-      original += chars(gen);
+      original += static_cast<char>(chars(gen));
     }
     std::string b64 = Utils::toBase64(original);
     std::string output = Utils::fromBase64(b64);

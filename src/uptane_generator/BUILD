@@ -39,3 +39,22 @@ cc_binary(
         "//src/libaktualizr",
     ],
 )
+
+cc_test(
+    name = "repo_test",
+    size = "small",
+    srcs = ["repo_test.cc"],
+    args = [
+        "$(location //src/uptane_generator)",
+    ],
+    data = [
+        ":uptane_generator",
+        "//tests:test_data",
+    ],
+    deps = [
+        ":uptane_generator_lib",
+        "//tests:test_utils",
+        "@gtest//:gtest_main",
+    ],
+    linkstatic = True,
+)

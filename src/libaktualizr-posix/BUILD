@@ -207,12 +207,24 @@ cc_library(
         "asn1/",
     ],
     linkstatic = True,
+    alwayslink = True,
     strip_include_prefix = "asn1/",
     deps = [
         ":asn1_messages",
         "//src/libaktualizr",
         "@boost//:intrusive_ptr",
     ],
+)
+
+cc_test(
+    name = "asn1_test",
+    size = "small",
+    srcs = ["asn1/asn1_test.cc"],
+    deps = [
+        ":asn1_lib",
+        "@gtest//:gtest_main",
+    ],
+    linkstatic = True,
 )
 
 cc_library(

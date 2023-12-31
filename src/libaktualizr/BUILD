@@ -532,3 +532,28 @@ cc_test(
     ],
     linkstatic = True,
 )
+
+cc_test(
+    name = "utilities_test",
+    size = "small",
+    srcs = [
+        "utilities/api_queue_test.cc",
+        "utilities/dequeue_buffer_test.cc",
+        "utilities/sighandler_test.cc",
+        "utilities/timer_test.cc",
+        "utilities/types_test.cc",
+        "utilities/utils_test.cc",
+        "utilities/xml2json_test.cc",
+    ],
+    data = [
+        "//tests:test_data",
+    ],
+    deps = [
+        ":libaktualizr",
+        "@gtest//:gtest_main",
+    ],
+    local_defines = [
+        "__NO_MAIN__",
+    ],
+    linkstatic = True,
+)
