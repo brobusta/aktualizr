@@ -476,6 +476,29 @@ cc_test(
 )
 
 cc_test(
+    name = "uptane_delegation_test",
+    size = "small",
+    srcs = ["uptane/uptane_delegation_test.cc"],
+    data = [
+        "//tests:config",
+        "//tests:test_data",
+        "//src/uptane_generator",
+        "//tests/uptane_repo_generation:delegation_basic",
+        "//tests/uptane_repo_generation:delegation_nested",
+    ],
+    args = [
+        "$(location //src/uptane_generator)",
+    ],
+    deps = [
+        ":libaktualizr",
+        "//tests:test_utils",
+        "//tests:uptane_test_common",
+        "@gtest//:gtest_main",
+    ],
+    linkstatic = True,
+)
+
+cc_test(
     name = "uptane_network_test",
     size = "small",
     srcs = ["uptane/uptane_network_test.cc"],
@@ -483,6 +506,23 @@ cc_test(
         "//tests:config",
         "//tests:test_data",
         "//tests:fake_http_server",
+    ],
+    deps = [
+        ":libaktualizr",
+        "//tests:test_utils",
+        "//tests:uptane_test_common",
+        "@gtest//:gtest_main",
+    ],
+    linkstatic = True,
+)
+
+cc_test(
+    name = "uptane_serial_test",
+    size = "small",
+    srcs = ["uptane/uptane_serial_test.cc"],
+    data = [
+        "//tests:config",
+        "//tests:test_data",
     ],
     deps = [
         ":libaktualizr",

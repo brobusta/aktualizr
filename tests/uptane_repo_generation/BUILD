@@ -3,6 +3,16 @@ load("@bazel_skylib//rules:run_binary.bzl", "run_binary")
 package(default_visibility = ["//visibility:public"])
 
 sh_binary(
+    name = "delegation_basic",
+    srcs = ["delegation_basic.sh"],
+)
+
+sh_binary(
+    name = "delegation_nested",
+    srcs = ["delegation_nested.sh"],
+)
+
+sh_binary(
     name = "generate_repo",
     srcs = ["generate_repo.sh"],
 )
