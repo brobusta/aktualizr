@@ -6,9 +6,9 @@ def load_libarchive_repo():
     http_archive(
         name = "libarchive",
         build_file = "@//third_party/libarchive:libarchive.BUILD",
-        sha256 = "63b40acff57467f7d3a64981d4bcff60b52f539fae7688aaaaee27a448b10266",
-        strip_prefix = "libarchive-3.7.2",
+        sha256 = "79b012035506c709495e982c36248253337c88e2e162636ec0505edff40f00d1",
+        strip_prefix = "libarchive-3.7.5",
         urls = [
-            "https://github.com/libarchive/libarchive/archive/refs/tags/v3.7.2.tar.gz",
+            "https://github.com/libarchive/libarchive/archive/refs/tags/v3.7.5.tar.gz",
         ],
     )
