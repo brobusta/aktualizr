@@ -6,9 +6,9 @@ def load_libostree_repo():
     http_archive(
         name = "libostree",
         build_file = "@//third_party/libostree:libostree.BUILD",
-        sha256 = "2f1a5a89efe3c0794eafb2a1b3048eb4ce8e6f46dd24791cd2455ab7c0f61da2",
-        strip_prefix = "ostree-2023.3",
+        sha256 = "bb241e6de33f90bd7f86d41df7eb445a7e7d75f89f3554a1394f3bdb2266c86d",
+        strip_prefix = "ostree-2023.8",
         urls = [
-            "https://github.com/ostreedev/ostree/archive/refs/tags/v2023.3.tar.gz",
+            "https://github.com/ostreedev/ostree/archive/refs/tags/v2023.8.tar.gz",
         ],
     )
