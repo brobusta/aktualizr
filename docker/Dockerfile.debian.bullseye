@@ -1,4 +1,4 @@
-FROM debian:bullseye
+FROM debian:bookworm
 LABEL Description="Aktualizr CI image using Debian Bullseye (oldstable)"
 
 ENV DEBIAN_FRONTEND noninteractive
