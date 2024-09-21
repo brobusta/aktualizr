@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM ubuntu:noble
 LABEL Description="Aktualizr testing dockerfile for Ubuntu Xenial with p11"
 
 ENV DEBIAN_FRONTEND noninteractive
