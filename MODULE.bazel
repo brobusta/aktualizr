@@ -1,0 +1,20 @@
+module(
+    name = "aktualizr",
+    version = "2024.1",
+)
+
+bazel_dep(name = "boost.conversion", version = "1.83.0.bzl.1")
+bazel_dep(name = "boost.filesystem", version = "1.83.0.bzl.3")
+bazel_dep(name = "boost.intrusive", version = "1.83.0.bzl.1")
+bazel_dep(name = "boost.log", version = "1.83.0.bzl.1")
+bazel_dep(name = "boost.process", version = "1.83.0.bzl.2")
+bazel_dep(name = "boost.program_options", version = "1.83.0.bzl.2")
+bazel_dep(name = "boost.property_tree", version = "1.83.0.bzl.1")
+bazel_dep(name = "boost.signals2", version = "1.83.0.bzl.1")
+bazel_dep(name = "boost.thread", version = "1.83.0.bzl.2")
+bazel_dep(name = "boost.uuid", version = "1.83.0.bzl.2")
+bazel_dep(name = "curl", version = "8.8.0")
+bazel_dep(name = "googletest", version = "1.15.2")
+bazel_dep(name = "jsoncpp", version = "1.9.5")
+bazel_dep(name = "libarchive", version = "3.7.5")
+bazel_dep(name = "sqlite3", version = "3.42.0.bcr.1")

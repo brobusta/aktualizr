@@ -212,7 +212,7 @@ cc_library(
     deps = [
         ":asn1_messages",
         "//src/libaktualizr",
-        "@boost//:intrusive_ptr",
+        "@boost.intrusive",
     ],
 )
 
@@ -222,7 +222,7 @@ cc_test(
     srcs = ["asn1/asn1_test.cc"],
     deps = [
         ":asn1_lib",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )

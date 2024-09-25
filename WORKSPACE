@@ -37,10 +37,6 @@ load("//third_party:repos.bzl", "load_external_repos")
 
 load_external_repos()
 
-load("@com_github_nelhage_rules_boost//:boost/boost.bzl", "boost_deps")
-
-boost_deps()
-
 # compile_commands.json
 http_archive(
     name = "hedron_compile_commands",

@@ -51,3 +51,4 @@ CMakeLists.txt.user
 
 # Bazel build
 bazel-*
+MODULE.bazel.lock

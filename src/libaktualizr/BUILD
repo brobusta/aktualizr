@@ -35,19 +35,22 @@ cc_library(
     ],
     linkopts = [],
     linkstatic = True,
+    defines = [
+      "BOOST_LOG_DYN_LINK",
+    ],
     deps = [
         "//:libaktualizr_headers",
-        "@boost//:filesystem",
-        "@boost//:log",
-        "@boost//:program_options",
-        "@boost//:property_tree",
-        "@boost//:signals2",
-        "@boost//:thread",
-        "@boost//:uuid",
+        "@boost.filesystem",
+        "@boost.log",
+        "@boost.program_options",
+        "@boost.property_tree",
+        "@boost.signals2",
+        "@boost.thread",
+        "@boost.uuid",
         "@curl",
-        "@gtest",
+        "@googletest//:gtest_prod",
         "@jsoncpp",
-        "@libarchive",
+        "@libarchive//libarchive",
         "@libp11",
         "@libsodium",
         "@openssl",
@@ -62,7 +65,7 @@ cc_test(
     srcs = ["storage/storage_atomic_test.cc"],
     deps = [
         ":libaktualizr",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -73,7 +76,7 @@ cc_test(
     srcs = ["storage/sql_utils_test.cc"],
     deps = [
         ":libaktualizr",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -85,7 +88,7 @@ cc_test(
     deps = [
         ":libaktualizr",
         "//src/uptane_generator:uptane_generator_lib",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -96,7 +99,7 @@ cc_test(
     srcs = ["bootloader/bootloader_test.cc"],
     deps = [
         ":libaktualizr",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -118,7 +121,7 @@ cc_test(
     ],
     deps = [
         ":libaktualizr",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -132,7 +135,7 @@ cc_test(
     ],
     deps = [
         ":libaktualizr",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -143,7 +146,7 @@ cc_test(
     srcs = ["crypto/hash_test.cc"],
     deps = [
         ":libaktualizr",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -157,7 +160,7 @@ cc_test(
     ],
     deps = [
         ":libaktualizr",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -172,7 +175,7 @@ cc_test(
     deps = [
         ":libaktualizr",
         "//tests:test_utils",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -187,7 +190,7 @@ cc_test(
     deps = [
         ":libaktualizr",
         "//tests:test_utils",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -202,7 +205,7 @@ cc_test(
     deps = [
         ":libaktualizr",
         "//tests:test_utils",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -213,7 +216,7 @@ cc_test(
     srcs = ["package_manager/packagemanagerconfig_test.cc"],
     deps = [
         ":libaktualizr",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -227,7 +230,7 @@ cc_test(
     ],
     deps = [
         ":libaktualizr",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -242,7 +245,7 @@ cc_test(
     deps = [
         ":libaktualizr",
         "//tests:test_utils",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -263,7 +266,7 @@ cc_test(
         ":libaktualizr",
         "//tests:test_utils",
         "//tests:uptane_test_common",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -284,7 +287,7 @@ cc_test(
         ":libaktualizr",
         "//tests:test_utils",
         "//tests:uptane_test_common",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -301,6 +304,7 @@ cc_library(
     linkstatic = True,
     deps = [
         ":libaktualizr",
+        "@googletest//:gtest",
     ],
     alwayslink = True,
 )
@@ -317,7 +321,7 @@ cc_test(
         ":provisional_test_utils",
         "//tests:test_utils",
         "//tests:uptane_test_common",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -337,7 +341,7 @@ cc_test(
     deps = [
         "//tests:test_utils",
         "//tests:uptane_test_common",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -357,7 +361,7 @@ cc_test(
     deps = [
         "//tests:test_utils",
         "//tests:uptane_test_common",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -373,7 +377,7 @@ cc_test(
     deps = [
         "//tests:test_utils",
         "//tests:uptane_test_common",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -385,7 +389,7 @@ cc_test(
     deps = [
         ":libaktualizr",
         "//tests:test_utils",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -402,7 +406,7 @@ cc_test(
         ":libaktualizr",
         "//tests:test_utils",
         "//tests:uptane_test_common",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -422,7 +426,7 @@ cc_test(
     deps = [
         "//tests:test_utils",
         "//tests:uptane_test_common",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -438,8 +442,8 @@ cc_test(
         ":libaktualizr",
         "//tests:test_utils",
         "//tests:uptane_test_common",
-        "@gtest//:gtest_main",
-        "@boost//:conversion",
+        "@googletest//:gtest_main",
+        "@boost.conversion",
     ],
     linkstatic = True,
 )
@@ -453,7 +457,7 @@ cc_test(
     ],
     deps = [
         ":libaktualizr",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -470,7 +474,7 @@ cc_test(
         ":libaktualizr",
         "//tests:test_utils",
         "//tests:uptane_test_common",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -493,7 +497,7 @@ cc_test(
         ":libaktualizr",
         "//tests:test_utils",
         "//tests:uptane_test_common",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -511,7 +515,7 @@ cc_test(
         ":libaktualizr",
         "//tests:test_utils",
         "//tests:uptane_test_common",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -528,7 +532,7 @@ cc_test(
         ":libaktualizr",
         "//tests:test_utils",
         "//tests:uptane_test_common",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
@@ -550,7 +554,7 @@ cc_test(
     ],
     deps = [
         ":libaktualizr",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     local_defines = [
         "__NO_MAIN__",

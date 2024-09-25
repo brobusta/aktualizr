@@ -35,7 +35,7 @@ cc_test(
         "//src/uptane_generator:uptane_generator_lib",
         "//tests:test_utils",
         "//tests:uptane_test_common",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )

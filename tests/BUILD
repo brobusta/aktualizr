@@ -44,8 +44,8 @@ cc_library(
         "//src/libaktualizr",
         "//src/sota_tools:sota_tools_lib",
         "//src/uptane_generator:uptane_generator_lib",
-        "@boost//:process",
-        "@gtest",
+        "@boost.process",
+        "@googletest//:gtest",
     ],
     alwayslink = True,
 )

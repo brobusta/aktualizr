@@ -54,7 +54,7 @@ cc_test(
     deps = [
         ":uptane_generator_lib",
         "//tests:test_utils",
-        "@gtest//:gtest_main",
+        "@googletest//:gtest_main",
     ],
     linkstatic = True,
 )
