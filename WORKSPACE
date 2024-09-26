@@ -23,9 +23,9 @@ register_toolchains(
 # Load rules_foreign_cc
 http_archive(
     name = "rules_foreign_cc",
-    sha256 = "2a4d07cd64b0719b39a7c12218a3e507672b82a97b98c6a89d38565894cf7c51",
-    strip_prefix = "rules_foreign_cc-0.9.0",
-    url = "https://github.com/bazelbuild/rules_foreign_cc/archive/0.9.0.tar.gz",
+    sha256 = "a2e6fb56e649c1ee79703e99aa0c9d13c6cc53c8d7a0cbb8797ab2888bbc99a3",
+    strip_prefix = "rules_foreign_cc-0.12.0",
+    url = "https://github.com/bazelbuild/rules_foreign_cc/archive/0.12.0.tar.gz",
 )
 
 load("@rules_foreign_cc//foreign_cc:repositories.bzl", "rules_foreign_cc_dependencies")
