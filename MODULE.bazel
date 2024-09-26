@@ -3,6 +3,15 @@ module(
     version = "2024.1",
 )
 
+bazel_dep(name = "hermetic_cc_toolchain", version = "3.1.1")
+toolchains = use_extension("@hermetic_cc_toolchain//toolchain:ext.bzl", "toolchains")
+use_repo(toolchains, "zig_sdk")
+
+register_toolchains(
+    "@zig_sdk//toolchain:linux_amd64_gnu.2.34",
+    "@zig_sdk//toolchain:linux_arm64_gnu.2.34",
+)
+
 bazel_dep(name = "boost.asio", version = "1.83.0.bzl.4")
 bazel_dep(name = "boost.conversion", version = "1.83.0.bzl.1")
 bazel_dep(name = "boost.filesystem", version = "1.83.0.bzl.3")
@@ -27,3 +36,10 @@ git_override(
     remote = "https://github.com/hedronvision/bazel-compile-commands-extractor.git",
     commit = "1e08f8e0507b6b6b1f4416a9a22cf5c28beaba93",
 )
+
+bazel_dep(name = "rules_cc", version = "0.0.10")
+bazel_dep(name = "rules_foreign_cc", version = "0.12.0")
+bazel_dep(name = "bazel_skylib", version = "1.7.1")
+bazel_dep(name = "platforms", version = "0.0.10")
+load_external_repos = use_extension("//third_party:repos.bzl", "load_external_repos")
+use_repo(load_external_repos, "asn1c", "libp11", "libsodium", "openssl")
