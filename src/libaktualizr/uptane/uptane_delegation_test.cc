@@ -247,7 +247,7 @@ int main(int argc, char** argv) {
   uptane_generator_path = argv[1];
 
   logger_init();
-  logger_set_threshold(boost::log::trivial::trace);
+  logger_set_threshold(spdlog::level::trace);
 
   return RUN_ALL_TESTS();
 }

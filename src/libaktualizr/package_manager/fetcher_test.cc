@@ -361,7 +361,7 @@ int main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);
 
   logger_init();
-  logger_set_threshold(boost::log::trivial::debug);
+  logger_set_threshold(spdlog::level::debug);
 
   std::string port = TestUtils::getFreePort();
   server += port;

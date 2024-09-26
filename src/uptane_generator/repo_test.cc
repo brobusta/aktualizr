@@ -681,7 +681,7 @@ TEST(uptane_generator, rotateImageRoot) { test_rotation(Uptane::RepositoryType::
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   logger_init();
-  logger_set_threshold(boost::log::trivial::trace);
+  logger_set_threshold(spdlog::level::trace);
   if (argc >= 2) {
     generate_repo_exec = argv[1];
   } else {

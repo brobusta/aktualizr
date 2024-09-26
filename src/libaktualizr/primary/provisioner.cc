@@ -53,7 +53,7 @@ bool Provisioner::Attempt() {
     current_state_ = State::kTemporaryError;
     return false;
   } catch (const std::exception& ex) {
-    LOG_DEBUG << "Provisioner::Attempt() caught an exception not deriving from Provisioner::Error";
+    LOG_DEBUG << "Provisioner::Attempt() caught an exception not deriving from Provisioner::Error " << ex.what();
     last_error_ = ex.what();
     current_state_ = State::kTemporaryError;
     return false;

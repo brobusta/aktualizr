@@ -124,7 +124,7 @@ int main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);
 
   logger_init();
-  logger_set_threshold(boost::log::trivial::trace);
+  logger_set_threshold(spdlog::level::trace);
 
   std::string port = TestUtils::getFreePort();
   server = "http://127.0.0.1:" + port;

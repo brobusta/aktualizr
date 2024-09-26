@@ -3,10 +3,11 @@ module(
     version = "2024.1",
 )
 
+bazel_dep(name = "boost.asio", version = "1.83.0.bzl.4")
 bazel_dep(name = "boost.conversion", version = "1.83.0.bzl.1")
 bazel_dep(name = "boost.filesystem", version = "1.83.0.bzl.3")
+bazel_dep(name = "boost.interprocess", version = "1.83.0.bzl.1")
 bazel_dep(name = "boost.intrusive", version = "1.83.0.bzl.1")
-bazel_dep(name = "boost.log", version = "1.83.0.bzl.1")
 bazel_dep(name = "boost.process", version = "1.83.0.bzl.2")
 bazel_dep(name = "boost.program_options", version = "1.83.0.bzl.2")
 bazel_dep(name = "boost.property_tree", version = "1.83.0.bzl.1")
@@ -17,4 +18,12 @@ bazel_dep(name = "curl", version = "8.8.0")
 bazel_dep(name = "googletest", version = "1.15.2")
 bazel_dep(name = "jsoncpp", version = "1.9.5")
 bazel_dep(name = "libarchive", version = "3.7.5")
+bazel_dep(name = "spdlog", version = "1.14.1")
 bazel_dep(name = "sqlite3", version = "3.42.0.bcr.1")
+
+bazel_dep(name = "hedron_compile_commands", dev_dependency = True)
+git_override(
+    module_name = "hedron_compile_commands",
+    remote = "https://github.com/hedronvision/bazel-compile-commands-extractor.git",
+    commit = "1e08f8e0507b6b6b1f4416a9a22cf5c28beaba93",
+)

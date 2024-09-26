@@ -20,5 +20,6 @@ cc_binary(
         "//src/libaktualizr",
         "//src/libaktualizr-posix:aktualizr-posix",
         "//src/virtual_secondary",
+        "@boost.asio",
     ],
 )

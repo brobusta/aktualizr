@@ -41,7 +41,7 @@ TEST(VirtualSecondary, RootRotation) {
   TemporaryDirectory meta_dir;
   auto http = std::make_shared<HttpFake>(temp_dir.Path(), "", meta_dir.Path() / "repo");
   Config conf = UptaneTestCommon::makeTestConfig(temp_dir, http->tls_server);
-  logger_set_threshold(boost::log::trivial::trace);
+  logger_set_threshold(spdlog::level::trace);
 
   auto storage = INvStorage::newStorage(conf.storage);
   UptaneTestCommon::TestAktualizr aktualizr(conf, storage, http);
@@ -136,7 +136,7 @@ TEST(VirtualSecondary, RootRotationFailure) {
   TemporaryDirectory meta_dir;
   auto http = std::make_shared<HttpFake>(temp_dir.Path(), "", meta_dir.Path() / "repo");
   Config conf = UptaneTestCommon::makeTestConfig(temp_dir, http->tls_server);
-  logger_set_threshold(boost::log::trivial::trace);
+  logger_set_threshold(spdlog::level::trace);
 
   auto storage = INvStorage::newStorage(conf.storage);
   UptaneTestCommon::TestAktualizr aktualizr(conf, storage, http);
@@ -195,7 +195,7 @@ int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
 
   logger_init();
-  logger_set_threshold(boost::log::trivial::trace);
+  logger_set_threshold(spdlog::level::trace);
 
   return RUN_ALL_TESTS();
 }

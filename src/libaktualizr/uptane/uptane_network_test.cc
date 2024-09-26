@@ -202,7 +202,7 @@ TEST(UptaneNetwork, LogConnectivityRestored) {
 #ifndef __NO_MAIN__
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
-  logger_set_threshold(boost::log::trivial::trace);
+  logger_set_threshold(spdlog::level::trace);
 
   port = TestUtils::getFreePort();
   boost::process::child server_process("tests/fake_http_server/fake_uptane_server.py", port);

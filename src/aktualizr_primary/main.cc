@@ -103,7 +103,7 @@ void processEvent(const std::shared_ptr<event::BaseEvent> &event) {
 
 int main(int argc, char *argv[]) {
   logger_init();
-  logger_set_threshold(boost::log::trivial::info);
+  logger_set_threshold(spdlog::level::info);
 
   bpo::variables_map commandline_map = parseOptions(argc, argv);
 

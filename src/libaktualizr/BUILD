@@ -35,13 +35,10 @@ cc_library(
     ],
     linkopts = [],
     linkstatic = True,
-    defines = [
-      "BOOST_LOG_DYN_LINK",
-    ],
     deps = [
         "//:libaktualizr_headers",
         "@boost.filesystem",
-        "@boost.log",
+        "@boost.interprocess",
         "@boost.program_options",
         "@boost.property_tree",
         "@boost.signals2",
@@ -54,6 +51,7 @@ cc_library(
         "@libp11",
         "@libsodium",
         "@openssl",
+        "@spdlog",
         "@sqlite3",
     ],
     alwayslink = True,
@@ -197,7 +195,7 @@ cc_test(
 
 cc_test(
     name = "fetcher_test",
-    size = "small",
+    size = "medium",
     srcs = ["package_manager/fetcher_test.cc"],
     data = [
         "//tests:fake_http_server",

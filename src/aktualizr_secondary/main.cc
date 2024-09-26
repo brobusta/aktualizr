@@ -80,7 +80,7 @@ bpo::variables_map parse_options(int argc, char **argv) {
 /*****************************************************************************/
 int main(int argc, char *argv[]) {
   logger_init();
-  logger_set_threshold(boost::log::trivial::info);
+  logger_set_threshold(spdlog::level::info);
   LOG_INFO << "aktualizr-secondary version " << aktualizr_version() << " starting";
 
   bpo::variables_map commandline_map = parse_options(argc, argv);

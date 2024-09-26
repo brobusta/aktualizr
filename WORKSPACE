@@ -36,15 +36,3 @@ rules_foreign_cc_dependencies()
 load("//third_party:repos.bzl", "load_external_repos")
 
 load_external_repos()
-
-# compile_commands.json
-http_archive(
-    name = "hedron_compile_commands",
-    sha256 = "044b148b111e17cee61d8c3aaeed42069f7325460382340afca4919f8265094c",
-    strip_prefix = "bazel-compile-commands-extractor-1e08f8e0507b6b6b1f4416a9a22cf5c28beaba93",
-    url = "https://github.com/hedronvision/bazel-compile-commands-extractor/archive/1e08f8e0507b6b6b1f4416a9a22cf5c28beaba93.tar.gz",
-)
-
-load("@hedron_compile_commands//:workspace_setup.bzl", "hedron_compile_commands_setup")
-
-hedron_compile_commands_setup()

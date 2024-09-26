@@ -917,7 +917,7 @@ int main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);
 
   logger_init();
-  logger_set_threshold(boost::log::trivial::debug);
+  logger_set_threshold(spdlog::level::debug);
 
   return RUN_ALL_TESTS();
 }

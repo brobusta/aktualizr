@@ -7,9 +7,9 @@ CommandQueue::~CommandQueue() {
   try {
     abort(false);
   } catch (std::exception& ex) {
-    LOG_ERROR << "~CommandQueue() exception: " << ex.what() << std::endl;
+    LOG_ERROR << "~CommandQueue() exception: " << ex.what();
   } catch (...) {
-    LOG_ERROR << "~CommandQueue() unknown exception" << std::endl;
+    LOG_ERROR << "~CommandQueue() unknown exception";
   }
 }
 

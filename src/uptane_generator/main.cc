@@ -80,7 +80,7 @@ int main(int argc, char **argv) {
 
   try {
     logger_init();
-    logger_set_threshold(boost::log::trivial::info);
+    logger_set_threshold(spdlog::level::info);
     po::variables_map vm;
     po::basic_parsed_options<char> parsed_options =
         po::command_line_parser(argc, argv).options(desc).positional(positionalOptions).run();

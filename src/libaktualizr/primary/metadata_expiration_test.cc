@@ -24,7 +24,7 @@ class MetadataExpirationTest : public ::testing::Test {
     conf_.uptane.force_install_completion = true;
     conf_.bootloader.reboot_sentinel_dir = temp_dir_.Path();
 
-    logger_set_threshold(boost::log::trivial::trace);
+    logger_set_threshold(spdlog::level::trace);
 
     storage_ = INvStorage::newStorage(conf_.storage);
     aktualizr_ = std::make_shared<UptaneTestCommon::TestAktualizr>(conf_, storage_, http_);
@@ -227,7 +227,7 @@ int main(int argc, char** argv) {
   uptane_generator_path = argv[1];
 
   logger_init();
-  logger_set_threshold(boost::log::trivial::trace);
+  logger_set_threshold(spdlog::level::trace);
 
   return RUN_ALL_TESTS();
 }

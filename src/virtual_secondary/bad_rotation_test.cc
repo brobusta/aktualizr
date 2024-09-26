@@ -2,7 +2,6 @@
 
 #include <gtest/gtest.h>
 
-#include <boost/log/utility/setup/file.hpp>
 #include "boost/filesystem.hpp"
 #include "httpfake.h"
 #include "libaktualizr/secondaryinterface.h"
@@ -22,7 +21,7 @@ TEST(VirtualSecondary, RootRotationExpires) {  // NOLINT
   TemporaryDirectory meta_dir;
   auto http = std::make_shared<HttpFake>(temp_dir.Path(), "", meta_dir.Path() / "repo");
   Config conf = UptaneTestCommon::makeTestConfig(temp_dir, http->tls_server);
-  logger_set_threshold(boost::log::trivial::trace);
+  logger_set_threshold(spdlog::level::trace);
 
   UptaneRepo uptane_repo{meta_dir.PathString(), "", "2023-03-04T16:43:12Z"};
   uptane_repo.generateRepo(KeyType::kED25519);
@@ -120,7 +119,7 @@ int main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);
 
   logger_init();
-  logger_set_threshold(boost::log::trivial::trace);
+  logger_set_threshold(spdlog::level::trace);
 
   return RUN_ALL_TESTS();
 }

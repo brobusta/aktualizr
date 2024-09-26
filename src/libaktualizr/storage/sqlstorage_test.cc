@@ -547,7 +547,7 @@ TEST(sqlstorage, store_and_load_report_events) {
 int main(int argc, char** argv) {
   ::testing::InitGoogleTest(&argc, argv);
   logger_init();
-  logger_set_threshold(boost::log::trivial::trace);
+  logger_set_threshold(spdlog::level::trace);
   if (argc != 2) {
     std::cout << "Please pass the directory containing sql migration scripts as the first argument\n";
     return 1;

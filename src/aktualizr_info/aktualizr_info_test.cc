@@ -17,7 +17,7 @@ class AktualizrInfoTest : public ::testing::Test {
     config_.storage.path = test_dir_.PathString();
     config_.storage.sqldb_path = test_db_file_;
     // set it into 'trace' to see the aktualizr-info output
-    config_.logger.loglevel = boost::log::trivial::error;
+    config_.logger.loglevel = spdlog::level::error;
     // Config ctor sets the log threshold to a default value (info) so we need to reset it to the desired one
     logger_set_threshold(config_.logger);
 

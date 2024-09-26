@@ -1,45 +1,43 @@
 #include "logging.h"
 
-#include <boost/log/core/core.hpp>
-#include <boost/log/expressions.hpp>
-
 #include "libaktualizr/config.h"
 
-using boost::log::trivial::severity_level;
-
-static severity_level gLoggingThreshold;  // NOLINT(cppcoreguidelines-avoid-non-const-global-variables)
+static spdlog::level::level_enum gLoggingThreshold;  // NOLINT(cppcoreguidelines-avoid-non-const-global-variables)
 
 extern void logger_init_sink(bool use_colors = false);
 
-int64_t get_curlopt_verbose() { return gLoggingThreshold <= boost::log::trivial::trace ? 1L : 0L; }
+int64_t get_curlopt_verbose() { return gLoggingThreshold <= spdlog::level::trace ? 1L : 0L; }
 
 void logger_init(bool use_colors) {
-  gLoggingThreshold = boost::log::trivial::info;
+  gLoggingThreshold = spdlog::level::trace;
 
   logger_init_sink(use_colors);
 
-  boost::log::core::get()->set_filter(boost::log::trivial::severity >= gLoggingThreshold);
+  spdlog::set_level(gLoggingThreshold);
 }
 
-void logger_set_threshold(const severity_level threshold) {
+void logger_set_threshold(const spdlog::level::level_enum threshold) {
   gLoggingThreshold = threshold;
-  boost::log::core::get()->set_filter(boost::log::trivial::severity >= gLoggingThreshold);
+  spdlog::set_level(gLoggingThreshold);
 }
 
 void logger_set_threshold(const LoggerConfig& lconfig) {
   int loglevel = lconfig.loglevel;
-  if (loglevel < boost::log::trivial::trace) {
+  if (loglevel < spdlog::level::trace) {
     LOG_WARNING << "Invalid log level: " << loglevel;
-    loglevel = boost::log::trivial::trace;
+    loglevel = spdlog::level::trace;
   }
-  if (boost::log::trivial::fatal < loglevel) {
+  if (spdlog::level::off < loglevel) {
     LOG_WARNING << "Invalid log level: " << loglevel;
-    loglevel = boost::log::trivial::fatal;
+    loglevel = spdlog::level::off;
   }
-  logger_set_threshold(static_cast<boost::log::trivial::severity_level>(loglevel));
+  logger_set_threshold(static_cast<spdlog::level::level_enum>(loglevel));
 }
 
-void logger_set_enable(bool enabled) { boost::log::core::get()->set_logging_enabled(enabled); }
+void logger_set_enable(bool enabled) {
+  auto level = enabled ? gLoggingThreshold : spdlog::level::off;
+  spdlog::set_level(level);
+}
 
 int loggerGetSeverity() { return static_cast<int>(gLoggingThreshold); }
 

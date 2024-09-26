@@ -361,7 +361,7 @@ int main(int argc, char** argv) {
   SecondaryOstreeTest::setOstreeRootfsTemplate(argv[1]);
 
   logger_init();
-  logger_set_threshold(boost::log::trivial::info);
+  logger_set_threshold(spdlog::level::info);
 
   return RUN_ALL_TESTS();
 }

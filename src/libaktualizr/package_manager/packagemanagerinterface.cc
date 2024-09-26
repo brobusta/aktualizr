@@ -165,7 +165,7 @@ bool PackageManagerInterface::fetchTarget(const Uptane::Target& target, Uptane::
       }
       ds->fhandle = appendTargetFile(target);
     }
-    LOG_TRACE << "Download status: " << response.getStatusStr() << std::endl;
+    LOG_TRACE << "Download status: " << response.getStatusStr();
     if (!response.isOk()) {
       if (response.curl_code == CURLE_WRITE_ERROR) {
         throw Uptane::OversizedTarget(target.filename());

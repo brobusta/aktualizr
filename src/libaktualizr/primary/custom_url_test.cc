@@ -36,7 +36,7 @@ TEST(Aktualizr, ImageCustomUrl) {
   TemporaryDirectory meta_dir;
   auto http = std::make_shared<HttpCheckUrl>(temp_dir.Path(), meta_dir.Path() / "repo");
   Config conf = UptaneTestCommon::makeTestConfig(temp_dir, http->tls_server);
-  logger_set_threshold(boost::log::trivial::trace);
+  logger_set_threshold(spdlog::level::trace);
 
   Process uptane_gen(uptane_generator_path.string());
   uptane_gen.run({"generate", "--path", meta_dir.PathString(), "--correlationid", "abc123"});
@@ -67,7 +67,7 @@ TEST(Aktualizr, BothCustomUrl) {
   TemporaryDirectory meta_dir;
   auto http = std::make_shared<HttpCheckUrl>(temp_dir.Path(), meta_dir.Path() / "repo");
   Config conf = UptaneTestCommon::makeTestConfig(temp_dir, http->tls_server);
-  logger_set_threshold(boost::log::trivial::trace);
+  logger_set_threshold(spdlog::level::trace);
 
   Process uptane_gen(uptane_generator_path.string());
   uptane_gen.run({"generate", "--path", meta_dir.PathString(), "--correlationid", "abc123"});
@@ -99,7 +99,7 @@ int main(int argc, char **argv) {
   uptane_generator_path = argv[1];
 
   logger_init();
-  logger_set_threshold(boost::log::trivial::trace);
+  logger_set_threshold(spdlog::level::trace);
 
   return RUN_ALL_TESTS();
 }

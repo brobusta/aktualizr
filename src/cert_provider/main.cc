@@ -155,7 +155,7 @@ int main(int argc, char* argv[]) {
   int exit_code = EXIT_FAILURE;
 
   logger_init();
-  logger_set_threshold(static_cast<boost::log::trivial::severity_level>(2));
+  logger_set_threshold(spdlog::level::info);
 
   try {
     bpo::variables_map commandline_map = parseOptions(argc, argv);
