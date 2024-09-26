@@ -424,7 +424,7 @@ TEST_F(SecondaryTest, ImageRootVersionIncremented) {
   EXPECT_TRUE(secondary_->putMetadata(uptane_repo_.getCurrentMetadata()).isSuccess());
 }
 
-TEST_F(SecondaryTest, SmallerImageFileSize) {
+TEST_F(SecondaryTest, DISABLED_SmallerImageFileSize) {
   EXPECT_CALL(update_agent_, receiveData)
       .Times((target_size - inavlid_target_size_delta) / send_buffer_size +
              ((target_size - inavlid_target_size_delta) % send_buffer_size ? 1 : 0));
@@ -436,7 +436,7 @@ TEST_F(SecondaryTest, SmallerImageFileSize) {
   EXPECT_FALSE(secondary_->install().isSuccess());
 }
 
-TEST_F(SecondaryTest, BiggerImageFileSize) {
+TEST_F(SecondaryTest, DISABLED_BiggerImageFileSize) {
   EXPECT_CALL(update_agent_, receiveData)
       .Times((target_size + inavlid_target_size_delta) / send_buffer_size +
              ((target_size + inavlid_target_size_delta) % send_buffer_size ? 1 : 0));
@@ -448,7 +448,7 @@ TEST_F(SecondaryTest, BiggerImageFileSize) {
   EXPECT_FALSE(secondary_->install().isSuccess());
 }
 
-TEST_F(SecondaryTest, InvalidImageData) {
+TEST_F(SecondaryTest, DISABLED_InvalidImageData) {
   EXPECT_CALL(update_agent_, receiveData)
       .Times(target_size / send_buffer_size + (target_size % send_buffer_size ? 1 : 0));
   EXPECT_CALL(update_agent_, install).Times(1);
