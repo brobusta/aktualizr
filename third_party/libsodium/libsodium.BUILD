@@ -4,9 +4,9 @@ genrule(
     cmd = """
 cat > $@ <<"EOF"
 #!/bin/sh
-sed -e 's/@VERSION@/1.0.18/g' \
-    -e 's/@SODIUM_LIBRARY_VERSION_MAJOR@/11/g' \
-    -e 's/@SODIUM_LIBRARY_VERSION_MINOR@/0/g' \
+sed -e 's/@VERSION@/1.0.20/g' \
+    -e 's/@SODIUM_LIBRARY_VERSION_MAJOR@/26/g' \
+    -e 's/@SODIUM_LIBRARY_VERSION_MINOR@/2/g' \
     -e 's/@SODIUM_LIBRARY_MINIMAL_DEF@//g'
 EOF""",
 )
