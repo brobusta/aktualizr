@@ -7,4 +7,35 @@ common --@curl//:use_mbedtls=true
 
 build --incompatible_enable_cc_toolchain_resolution
 build --action_env BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=1
-build --cxxopt='-std=c++20'
+build --cxxopt -std=c++20
+
+# debug
+build:debug --verbose_failures
+build:debug --sandbox_debug
+build:debug --toolchain_resolution_debug=regex
+
+# asan
+build:asan --copt -fsanitize=address
+build:asan --linkopt -fsanitize=address
+build:asan --copt -fno-omit-frame-pointer
+build:asan --copt -g
+build:asan --copt -O1
+build:asan --strip never
+
+# usan
+build:usan --cxxopt -fsanitize=undefined
+build:usan --cxxopt -fno-omit-frame-pointer
+build:usan --cxxopt -g
+build:usan --cxxopt -O1
+build:usan --strip never
+build:usan --linkopt -fsanitize=undefined"
+
+# tsan
+build:tsan --cxxopt -fsanitize=thread"
+build:tsan --cxxopt -fno-omit-frame-pointer"
+build:tsan --cxxopt -g
+build:tsan --cxxopt -O1
+build:tsan --strip never
+build:tsan --linkopt -fsanitize=thread
+
+test --test_output errors
