@@ -28,7 +28,7 @@ bazel_dep(name = "googletest", version = "1.15.2")
 bazel_dep(name = "jsoncpp", version = "1.9.5")
 bazel_dep(name = "libarchive", version = "3.7.5")
 bazel_dep(name = "spdlog", version = "1.14.1")
-bazel_dep(name = "sqlite3", version = "3.42.0.bcr.1")
+bazel_dep(name = "sqlite3", version = "3.46.1")
 
 bazel_dep(name = "hedron_compile_commands", dev_dependency = True)
 git_override(
