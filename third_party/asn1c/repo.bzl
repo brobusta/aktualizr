@@ -6,9 +6,9 @@ def load_asn1c_repo():
     http_archive(
         name = "asn1c",
         build_file = "@//third_party/asn1c:asn1c.BUILD",
-        sha256 = "d46922700805b8f144f40ba7828e991cafeff51beb48ebc3bbf8687337d23348",
-        strip_prefix = "asn1c-9925dbbda86b436896108439ea3e0a31280a6065",
+        sha256 = "b0f58fb5579ba93249d0a5a071c028404c5040f468a27dfe339a7d677d3545b9",
+        strip_prefix = "asn1c-8a274c3f99761f249b6c205e1c89be1b1cb7c669",
         urls = [
-            "https://github.com/vlm/asn1c/archive/9925dbbda86b436896108439ea3e0a31280a6065.zip",
+            "https://github.com/vlm/asn1c/archive/8a274c3f99761f249b6c205e1c89be1b1cb7c669.zip",
         ],
     )
