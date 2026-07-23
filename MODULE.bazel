@@ -39,7 +39,7 @@ git_override(
 
 bazel_dep(name = "rules_cc", version = "0.0.10")
 bazel_dep(name = "rules_foreign_cc", version = "0.12.0")
-bazel_dep(name = "bazel_skylib", version = "1.7.1")
+bazel_dep(name = "bazel_skylib", version = "1.9.2")
 bazel_dep(name = "platforms", version = "0.0.10")
 load_external_repos = use_extension("//third_party:repos.bzl", "load_external_repos")
 use_repo(load_external_repos, "asn1c", "libp11", "libsodium", "openssl")
